@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 
-namespace IndividualSharp.Utils
+namespace Individual.Utils
 {
 	public static class Preconditions
 	{

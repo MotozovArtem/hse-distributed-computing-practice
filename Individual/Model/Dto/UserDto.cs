@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace IndividualSharp.Model.Dto
+namespace Individual.Model.Dto
 {
 	public class UserDto
 	{

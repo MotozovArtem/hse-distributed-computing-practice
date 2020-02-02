@@ -1,9 +1,9 @@
-﻿namespace IndividualSharp.Model.Dto
+﻿namespace Individual.Model.Dto
 {
-	public interface Converter<Domain, Dto> where Domain: DomainObject
+	public interface IConverter<TDomain, TDto> where TDomain: DomainObject
 	{
-		Domain ToDomain(Dto dto);
+		TDomain ToDomain(TDto dto);
 		
-		Dto ToDto(Domain obj);
+		TDto ToDto(TDomain obj);
 	}
 }

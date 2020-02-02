@@ -1,9 +1,9 @@
-﻿using System;
-using IndividualSharp.Utils;
+﻿using Individual.Utils;
+using UserDto = Individual.Model.Dto.UserDto;
 
-namespace IndividualSharp.Model.Dto
+namespace Individual.Model.Dto
 {
-	public class UserConverter: Converter<User, UserDto>
+	public class UserConverter: IConverter<User, UserDto>
 	{
 		public User ToDomain(UserDto dto)
 		{

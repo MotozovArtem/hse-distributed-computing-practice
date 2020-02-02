@@ -1,4 +1,4 @@
-﻿namespace IndividualSharp.Model
+﻿namespace Individual.Model
 {
 	public abstract class DomainObject
 	{

@@ -1,7 +1,7 @@
 ﻿using System;
-using IndividualSharp.Utils;
+using Individual.Utils;
 
-namespace IndividualSharp.Model
+namespace Individual.Model
 {
 	public class User: DomainObject
 	{
