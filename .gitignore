@@ -1,6 +1,19 @@
-bin/
-obj/
+# Java output
+**/target/*
+
+# C# output
+**/bin/*
+**/obj/*    
 /packages/
+
+# IntelliJ IDEA 
 **/.idea/*
+
+# Visual Studio
 **/.vs/*
 
+# Visual Studio Code
+**/.vscode/*
+**/.classpath
+**/.project
+**/.settings/*
