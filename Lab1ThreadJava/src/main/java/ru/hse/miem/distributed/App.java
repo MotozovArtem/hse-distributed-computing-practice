@@ -6,13 +6,36 @@ import java.util.concurrent.Executors;
 import ru.hse.miem.distributed.operations.HelloWorldOperation;
 
 public class App {
-	public static ExecutorService executor = Executors.newSingleThreadExecutor();
+	public static ExecutorService executor = Executors.newSingleThreadExecutor((r) -> {
+		Thread t = new Thread(r,"Threads-With-MAX_PRIORITY");
+		t.setPriority(Thread.MAX_PRIORITY);
+		return t;
+	});
+
+	public static String getPrettyPriority(int priorityLevel) {
+		if (priorityLevel > Thread.MAX_PRIORITY || priorityLevel < Thread.MIN_PRIORITY) {
+			throw new IllegalArgumentException("Priority level cannot be lower " +
+					"than MIN_PRIORITY or greater than MAX_PRIORITY");
+		}
+		if (priorityLevel == 5) {
+			return "NORM_PRIORITY";
+		}
+		if (priorityLevel == 10) {
+			return "MAX_PRIORITY";
+		}
+		if (priorityLevel == 1) {
+			return "MIN_PRIORITY";
+		}
+		return Integer.toString(priorityLevel);
+	}
 
 	public static void main(String[] args) {
 		Thread thread = new Thread(() -> {
-			for (int i = 0; i < 20; i++) {
-				String threadName = Thread.currentThread().getName();
+			Thread currentThread = Thread.currentThread();
+			String threadName = currentThread.getName();
+			for (int i = 0; i < 10; i++) {
 				System.out.println("Hello world from thread: " + threadName + "!!! i=" + i);
+				System.out.println("Thread priority: " + getPrettyPriority(currentThread.getPriority()));
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException ignored) {
@@ -20,6 +43,7 @@ public class App {
 				}
 			}
 		}, "Operation[Hello]");
+		thread.setPriority(1);
 
         /* 
         Эквивалентно записи 
@@ -40,11 +64,13 @@ public class App {
         */
 		thread.start();
 
-//		executor.submit(new HelloWorldOperation());
+		executor.submit(new HelloWorldOperation());
 
-		for (int i = 0; i < 20; i++) {
-			String threadName = Thread.currentThread().getName();
+		Thread currentThread = Thread.currentThread();
+		String threadName = currentThread.getName();
+		for (int i = 0; i < 10; i++) {
 			System.out.println("Hello world from thread: " + threadName + " i=" + i);
+			System.out.println("Thread priority: " + getPrettyPriority(currentThread.getPriority()));
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException ignored) {

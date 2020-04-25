@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Lab1Thread
 {
-	class HelloOperation
+	public class HelloOperation
 	{
 		public void PrintHello()
 		{
@@ -33,11 +33,11 @@ namespace Lab1Thread
 				for (int i = 0; i < 20; i++)
 				{
 					Console.WriteLine($"Hello World from thread: {Thread.CurrentThread.Name}");
-					Thread.Sleep(5000);
+					Thread.Sleep(1000);
 				}
 			});
 			task.Start();
-			
+
 			for (int i = 0; i < 20; i++)
 			{
 				Console.WriteLine($"Hello World from thread: {Thread.CurrentThread.Name}");
