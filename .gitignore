@@ -9,6 +9,11 @@
 # IntelliJ IDEA 
 **/.idea/*
 *.iml
+**/.gradle/*
+**/gradle/*
+gradlew
+gradlew.bat
+**/build/*
 
 # Visual Studio
 **/.vs/*
