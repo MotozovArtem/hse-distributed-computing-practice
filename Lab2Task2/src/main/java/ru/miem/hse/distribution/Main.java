@@ -14,10 +14,12 @@ public class Main {
 	public static void main(String[] args) throws MalformedURLException {
 		log.info("Application stated");
 		log.info("Creating first download thread");
-		Thread firstDownloadThread = new Thread(new DownloadPageOperation("https://en.wikipedia.org/wiki/C%2B%2B", HttpMethod.GET));
+		Thread firstDownloadThread = new Thread(new DownloadPageOperation(
+				"https://en.wikipedia.org/wiki/C%2B%2B", HttpMethod.GET));
 
 		log.info("Creating second download thread");
-		Thread secondDownloadThread = new Thread(new DownloadPageOperation("https://en.wikipedia.org/wiki/Java_(programming_language)", HttpMethod.GET));
+		Thread secondDownloadThread = new Thread(new DownloadPageOperation(
+				"https://en.wikipedia.org/wiki/Java_(programming_language)", HttpMethod.GET));
 
 		log.info("Starting first download thread");
 		firstDownloadThread.start();
